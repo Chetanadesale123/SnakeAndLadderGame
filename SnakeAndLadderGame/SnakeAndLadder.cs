@@ -10,6 +10,7 @@ namespace SnakeAndLadderGame
     {
         int position = 0;
         const int NO_PLAY = 0, SNAKE = 1, LADDER = 2;
+        int count = 0;
         public int DieRoll()
         {
             Random random = new Random();
@@ -30,7 +31,7 @@ namespace SnakeAndLadderGame
                         break;
                     case SNAKE:
                         this.position -= this.DieRoll();
-                        if(this.position < 0)
+                        if (this.position < 0)
                         {
                             this.position = 0;
                         }
@@ -38,14 +39,19 @@ namespace SnakeAndLadderGame
                     case LADDER:
                         int roll = this.DieRoll();
                         this.position += roll;
-                        if(this.position >100)
+                        if (this.position > 100)
                         {
                             this.position -= roll;
                         }
                         break;
                 }
+
+                Console.WriteLine("position after every die roll : " + this.position);
+                count++;
+
             }
-            Console.WriteLine(this.position);
+            Console.WriteLine("number of times dice was played :" + count++);
+
         }
     }
 }
